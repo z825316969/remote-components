@@ -4,16 +4,15 @@ import logo from './logo.svg';
 import './App.css';
 
 async function getComponent() {
-  // 需要手动定义一个require函数
   let require = function (dependencies, factory) {
     return factory(React)
   }
   try {
-    let val = await axios.get('./main.js') // 去网络上请求打包后的组件js
+    let val = await axios.get('./main.js')
     return new Function('require' ,`return ${val.data}`)(require)
   }
-  catch (ex) {
-    console.error(ex)
+  catch (e) {
+    console.error(e)
     return null
   }
 }
