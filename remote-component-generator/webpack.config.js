@@ -1,25 +1,25 @@
-const path = require('path')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  devServer : {  // 
-    host : 'localhost', // 服务启动的 ip 地址 localhost 即本地
-    port : '2899', // 开启的端口
-    open : true, // 是否开启服务后 打开浏览器
-    static: "./"
-  },
+  // devServer : {  //
+  //   host : 'localhost',
+  //   port : '2899',
+  //   open : true,
+  //   static: "./"
+  // },
   // entry: process.env.NODE_ENV === 'production' ? "./src/index.jsx" : "./src/app.jsx",
   entry: "./src/index.jsx",
   mode: "production",
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
     library: {
-      type: 'amd-require', // amd模式打包，立即执行
+      type: "amd-require",
     },
   },
   externals: {
-    react: 'react'  // react为外部依赖
+    react: "react",
   },
   module: {
     rules: [
@@ -28,14 +28,11 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [
-              "@babel/preset-react",
-              "@babel/preset-env",
-            ]
-          }
+            presets: ["@babel/preset-react", "@babel/preset-env"],
+          },
         },
-        exclude: /node_modules/
-      }
-    ]
-  }
-}
+        exclude: /node_modules/,
+      },
+    ],
+  },
+};
