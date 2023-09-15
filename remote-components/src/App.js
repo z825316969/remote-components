@@ -30,13 +30,12 @@ function App() {
   // let [Component, setComponent] = useState(null)
   
   // useEffect(() => {
-  //   getComponent()
   //   getComponent().then((val) => {
   //     setComponent(() => val.default)
   //   })
   // }, [])
   
-  const Component = useMemo(() => {
+  const Component1 = useMemo(() => {
     return lazy(async () => await getComponent())
   }, [])
   
@@ -44,11 +43,22 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        {/* {!!Component && (
+          <Component
+            x={99}
+            data={{
+              time1: '08:30',
+              time2: '12:35',
+              station1: '上海虹桥站',
+              station2: '南京南站',
+            }}
+          />
+        )} */}
         <Suspense
           fallback={(
             <span style={{fontSize: 50}}>Loading...</span>
           )}>
-          <Component
+          <Component1
             x={99}
             data={{
               time1: '08:30',

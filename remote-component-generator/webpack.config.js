@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+console.log('process.env.NODE_ENV :>> ', process.env.NODE_ENV);
 module.exports = {
   // devServer : {  //
   //   host : 'localhost',
@@ -13,7 +14,7 @@ module.exports = {
   mode: "production",
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
+    path: process.env.NODE_ENV === 'development' ? path.resolve(__dirname, "build") : path.resolve(__dirname, "dist"),
     library: {
       type: "amd-require",
     },
@@ -21,6 +22,9 @@ module.exports = {
   externals: {
     react: "react",
   },
+  // optimization:{
+  //   minimize: false,
+  // },
   module: {
     rules: [
       {
